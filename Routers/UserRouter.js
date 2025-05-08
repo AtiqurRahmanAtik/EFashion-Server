@@ -53,4 +53,44 @@ router.get('/users/:id', async(req,res)=>{
     }
 })
 
+router.delete('/users/:id', async(req,res)=>{
+    const id = req.params.id;
+    
+    try{
+        const user = await UserModel.findByIdAndDelete(id);
+        // console.log(user);
+        if(!user){
+            return res.status(404).json({message : 'product not found'})
+        }
+       
+
+        res.send(user);
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+
+router.put('/users/:id', async(req,res)=>{
+        const id = req.params.id;
+        const {name,email,password} = req.body;
+
+    try{
+
+        const userUpdate = await UserModel.findByIdAndUpdate(id,{name,email,password}, {new : true});
+
+        // console.log(userUpdate);
+
+        if(!userUpdate){
+            res.status(404).json({massage : 'user not Update : '})
+        }
+
+        res.send(userUpdate)
+    }
+    catch(err){
+        console.error('not update data : ',err)
+    }
+})
+
 module.exports = router;
