@@ -7,11 +7,14 @@ const router = express.Router();
 // Get Post api from register page to database
 router.post('/users', async (req,res)=>{
     const {name, email, password} = req.body;
+  
+ 
 
     try{
         const users = new UserModel({name,email,password});
+     
         await users.save();
-        res.send(users);
+        res.status(201).send(users);
     }
     catch(err){
         console.error('Error not connect to the User Api : ',err);

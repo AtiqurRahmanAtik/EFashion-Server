@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const mongoose = require('mongoose');
+
 const connectDB = require('./DataBase/DB_Connect.js');
 const ProductRouter = require('./Routers/ProductRouter.js');
 const UserRouter = require('./Routers/UserRouter.js');
@@ -12,6 +12,7 @@ const port = process.env.PORT || 5000;
 
 // middleWare
 app.use(express.json());
+
 
 // app.use(cors());
 app.use(
