@@ -18,12 +18,14 @@ router.get('/product', async(req,res)=>{
 
 
 // single Product details Get api here
-router.get('/Product/:id', async(req,res)=>{
+router.get('/product/:id', async(req,res)=>{
+    // console.log(req.params.id);
     const id = req.params.id;
     
     try{
 
         const  singleProduct = await ProductModel.findById(id).exec();
+       
         res.send(singleProduct);
     }
     catch(err){

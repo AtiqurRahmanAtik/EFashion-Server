@@ -27,12 +27,29 @@ router.post('/users', async (req,res)=>{
 router.get('/users', async(req,res)=>{
 
     try{
-        const users = await UserModel.find();
+        const users = await UserModel.find({});
         res.send(users);
 
     }
     catch(err){
         console.error('connot get register users api form database :', err);
+    }
+})
+
+
+router.get('/users/:id', async(req,res)=>{
+    const id = req.params.id;
+
+    try{
+            const user = await UserModel.findById(id);
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+              }
+
+            res.send(user);
+    }
+    catch(err){
+        console.log('Not find single data user api',err)
     }
 })
 

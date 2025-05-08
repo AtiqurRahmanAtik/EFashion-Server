@@ -37,9 +37,9 @@ app.use(
 
 //  Get Product Api here
 app.use('/api', ProductRouter);
-app.use('/api',ProductRouter );
+
 app.use('/api', UserRouter);
-app.use('/api',UserRouter);
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
