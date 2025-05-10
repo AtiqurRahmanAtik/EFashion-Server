@@ -50,6 +50,7 @@ router.get('/users/:id', async(req,res)=>{
     }
     catch(err){
         console.log('Not find single data user api',err)
+        console.log('Not find single data user api',err)
     }
 })
 
