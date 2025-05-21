@@ -33,4 +33,19 @@ router.get('/product/:id', async(req,res)=>{
     }
 })
 
+
+router.delete('/product/:id', async(req,res)=>{
+    const id = req.params.id;
+
+    try{
+        const product = await ProductModel.findByIdAndDelete(id).exec();
+        if (!product) return res.status(404).json({ message: 'Not found' });
+        res.send(product);
+
+    }
+    catch(err){
+         console.error('Cannot Delete single Product : ', err);
+    }
+})
+
 module.exports = router;

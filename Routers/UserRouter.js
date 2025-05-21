@@ -50,9 +50,10 @@ router.get('/users/:id', async(req,res)=>{
     }
     catch(err){
         console.log('Not find single data user api',err)
-        console.log('Not find single data user api',err)
+        
     }
 })
+
 
 router.delete('/users/:id', async(req,res)=>{
     const id = req.params.id;
@@ -74,11 +75,14 @@ router.delete('/users/:id', async(req,res)=>{
 
 
 router.put('/users/:id', async(req,res)=>{
-        const id = req.params.id;
+        const {id} = req.params;
+        // console.log(id);
+      
         const {name,email,password} = req.body;
+        
 
     try{
-
+        
         const userUpdate = await UserModel.findByIdAndUpdate(id,{name,email,password}, {new : true});
 
         // console.log(userUpdate);
