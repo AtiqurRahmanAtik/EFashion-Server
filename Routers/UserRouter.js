@@ -8,11 +8,11 @@ const router = express.Router();
 router.post('/users', async (req,res)=>{
     const {name, email, password} = req.body;
   
- 
+//  console.log(req.body);
 
     try{
         const users = new UserModel({name,email,password});
-     
+        console.log(users);
         await users.save();
         res.status(201).send(users);
     }
