@@ -22,7 +22,7 @@ router.get('/product/:id', async(req,res)=>{
     // console.log(req.params.id);
     const id = req.params.id;
     console.log('Single Product id : ', id);
-    console.log('Single Product id : ', id);
+ 
     
     try{
 
